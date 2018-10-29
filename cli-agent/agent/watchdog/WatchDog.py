@@ -2,15 +2,15 @@
 
 import schedule
 import time
-from agent.scanner import JobScanner
+from agent.scanner import MetaScanner
 
 
 class WatchDog(object):
     def __init__(self):
-        self.__job_scanner = JobScanner.JobScanner()
+        self.__jobScanner = MetaScanner.MetaScanner()
 
     def run(self):
-        schedule.every(1).minutes.do(self.__job_scanner.scan_from_remote)
+        schedule.every(1).minutes.do(self.__jobScanner.scanFromRemote)
         while True:
             schedule.run_pending()
             time.sleep(1)
